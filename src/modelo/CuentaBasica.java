@@ -10,23 +10,23 @@ package modelo;
  * @author Jose Maldonado
  */
 public class CuentaBasica {
-    private int numero_de_cuenta; 
-    private String cliente = null;
-    private double saldo;
+    private int numeroDeCuenta; 
+    private String cliente=null;
+    double saldo;
     private double cantidad;
     private double retiro;
     
-    public void CuentaBasica (int numero_de_cuenta, String cliente, int saldo){
-        this.numero_de_cuenta = numero_de_cuenta;
-        this.cliente = cliente;
-        this.saldo =    saldo;
+    
+    public CuentaBasica(int numeroDeCuentas, String cliente, int saldo) {
+        this.numeroDeCuenta = 1;
+        this.cliente = "Gustavo";
+        this.saldo = saldo=0;
     }
     
-
     public double getSaldo()
     {
         return this.saldo;
-    }
+    }  
     
     public double depositar(double deposito)
     {
@@ -35,14 +35,25 @@ public class CuentaBasica {
         return saldo;
     }
     
-    public double retirar (double retirar)
+    public boolean retirar (double retirar)
     {
-        
+        boolean xSaldo=true;
         this.retiro=retirar;
-        saldo=saldo-retiro;
-            
-         return saldo;
-    }
+        if(retiro<=saldo)
+        {
+            saldo=saldo-retiro;
+            xSaldo=true;
+        }
+        else
+        {
+            if (retiro>saldo)
+            {
+                xSaldo=false;
+            }
+ 
+        }
+        return xSaldo;
 
+    }
     
 }

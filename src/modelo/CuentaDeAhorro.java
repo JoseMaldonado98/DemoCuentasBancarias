@@ -9,12 +9,8 @@ package modelo;
  *
  * @author Jose Maldonado
  */
-public class CuentaDeAhorro {
-        int numerodecuenta;
-        String cliente;
-        double saldo;
-        public double saldo2;
-        double tasaInteres= 0.3287;
+public class CuentaDeAhorro extends CuentaBasica {
+     double tasaInteres= 0.3287;
         public double Interes;
         public double comision;
         double comisionporsaldo=50;
@@ -22,54 +18,15 @@ public class CuentaDeAhorro {
         double retiro;
         public double Interes2;
         public double comision2;
-        
-        public void CuentaDeAhorro (int numerodecuenta, String cliente)
-        {
-            this.numerodecuenta=numerodecuenta;
-            this.cliente=cliente;
-        }
-        
-        public double getSaldo()
-        {
-            return this.saldo;
-        }
-                
-        public double depositar(double deposito)
-        {
-            this.cantidad=deposito;
-            saldo= saldo + cantidad;
-            return saldo;
-        }
+        public double saldo2;
+        private double saldo;
+        private double tasaDeInteres;
+        private double comisionPorSaldo;
 
-        public boolean retirar (double retirar)
-         {
-            boolean xSaldo=true;
-            this.retiro=retirar;
-            if(retiro<=saldo)
-            {
-                saldo=saldo-retiro;
-                xSaldo=true;
-            }
-            else
-            {
-                if (retiro>saldo)
-                {
-                    xSaldo=false;
-                }
-
-            }
-            return xSaldo;
-
-        }
-        
-        public double calcularInteres (double periodo)
-        {
-            Interes= (tasaInteres*saldo)/100;
-            Interes=Interes*periodo;
-            return Interes;
-        }
-        
-        public double calcularcomisionporsaldo(double periodo)
+    public CuentaDeAhorro(int numeroDeCuenta, String cliente,int saldo) {
+        super( numeroDeCuenta, cliente,saldo);
+    }
+    public double calcularcomisionporsaldo(double periodo)
         {
             if(saldo<1000)
             {
@@ -108,5 +65,10 @@ public class CuentaDeAhorro {
             return saldo;
         }
 
-    
+    public void calcularInteres(int periodo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
+
+
+    
